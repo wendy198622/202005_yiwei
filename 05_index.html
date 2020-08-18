@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!-- <html xmlns="http://www.w3.org/1999/xhtml"> -->
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>最新消息</title>
+	<meta name="author" content="" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="Resource-type" content="" />
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/lib/animate.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css" /> -->
+	<link rel="stylesheet" type="text/css" href="css/lib/slick.css">
+	<link rel="stylesheet" type="text/css" href="css/lib/slick-theme.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="Shortcut Icon" type="image/x-icon" href="img/favicon-20200130120352740.ico" />
+
+	<!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+
+	<script type="text/javascript" src="js/lib/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="js/lib/wow.min.js"></script>
+	<!-- <script type="text/javascript" src="js/lib/bootstrap.min.js"></script> -->
+	<script type="text/javascript" src="js/lib/slick.js"></script>
+	<script type="text/javascript" src="js/lib/vue.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+	<script type="text/javascript" src="js/lib/require.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<header id="header">
+			<div class="container">
+				<h1><a href="01_index.html"><img src="img/logo.png" alt="逸偉建設"></a></h1>
+				<a class="toggle"><img src="img/icon_menu.svg"></a>
+				<nav class="menu">
+					<ul>
+						<li><a href="02_index.html">關於逸偉</a></li>
+						<li><a href="03_index.html">個案作品</a></li>
+						<li class="active"><a href="05_index.html">最新消息</a></li>
+						<li><a href="07_index.html">聯絡我們</a></li>
+						<li><a href="08_index.html">土地合建</a></li>
+					</ul>
+					<div class="icon-close"><img src="img/icon_delete.svg"></div>
+				</nav>
+			</div>
+		</header>
+		<div class="wrap wrap_news" id="app">
+			<!-- 產品 -->
+			<div class="themeBox themePage">
+				<div class="themebox__container">
+					<div class="themeboxTitle">
+						<div class="themeboxTitle_Txt productboxtitle_Txt wow fadeInUp">
+							<div class="themeboxTitle__en align__center">NEWS</div>
+							<div class="themeboxTitle__ch align__center">最新消息</div>
+						</div>
+					</div>
+
+					<div class="themebox__container">
+						<div class="newsBox">
+							<ul class="newsNav">
+								<li id="all" :class="{active: selectTag == 0}" v-on:click="onClickTag(0)">ALL</li>
+								<li id="local" :class="{active: selectTag == 1}" v-on:click="onClickTag(1)">區域消息</li>
+								<li id="news" :class="{active: selectTag == 2}" v-on:click="onClickTag(2)">建案新聞</li>
+							</ul>
+							<div class="newsContent">
+								<div class="newsContentInbox">
+									<div class="newsBlock active">
+										<div class="newsBlock_List wow fadeInUp" v-for="data in list_data">
+											<a href="06_index.html">
+												<div class="newsList_Date">{{data.date}}</div>
+												<div class="newsList_Title">{{data.title}}</div>
+												<div class="newsList_Desc">{{data.desc}}</div>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="themebox_Btn themebox_Btn__center">
+						<a href="#" v-on:click.prevent="loadMore()">VIEW MORE</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer id="footer"></footer>
+
+
+
+		<script type="text/javascript">
+
+			new Vue({
+				el: '#app',
+				data: {
+					selectTag: 0,
+					list_data: [
+						{
+							date: '2019-11-02',
+							title: '小資族首購族看過來-0',
+							desc: '逸偉建設股份有限公司於桃園市龜山區推出全新建案「逸偉華漾」，是預售大店住樓的建案，歡迎...'
+						}
+					]
+				},
+				methods: {
+					onClickTag: function (tag) {
+						this.selectTag = tag
+						
+						//置換list資料
+						this.list_data = [
+							{
+								date: '2019-11-02',
+								title: '小資族首購族看過來-' + tag,
+								desc: '逸偉建設股份有限公司於桃園市龜山區推出全新建案「逸偉華漾」，是預售大店住樓的建案，歡迎...'
+							}
+						]
+					},
+					loadMore:function(){
+						this.list_data.push({
+								date: '2019-11-02',
+								title: '小資族首購族看過來-addd',
+								desc: '逸偉建設股份有限公司於桃園市龜山區推出全新建案「逸偉華漾」，是預售大店住樓的建案，歡迎...'
+							},{
+								date: '2019-11-02',
+								title: '小資族首購族看過來-addd',
+								desc: '逸偉建設股份有限公司於桃園市龜山區推出全新建案「逸偉華漾」，是預售大店住樓的建案，歡迎...'
+							},{
+								date: '2019-11-02',
+								title: '小資族首購族看過來-addd',
+								desc: '逸偉建設股份有限公司於桃園市龜山區推出全新建案「逸偉華漾」，是預售大店住樓的建案，歡迎...'
+							})
+					}
+				}
+			})
+		</script>
+	</div>
+</body>
+
+</html>
