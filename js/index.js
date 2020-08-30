@@ -38,6 +38,8 @@ $(document).ready(function(){
 
     $('.slider_kv').slick({
         infinite: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
         slidesToShow: 1,
         slidesToScroll: 1,
         dots: true,
